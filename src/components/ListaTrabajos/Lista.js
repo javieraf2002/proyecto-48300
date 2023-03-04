@@ -17,13 +17,6 @@ const Lista = ({
                         SeleccionarTarea={SeleccionarTarea}
                     >
                     </Trabajo>
-                    // <Pressable
-                    //     style={styles.tarea}
-                    //     onPress={() => { SeleccionarTarea(itemData.item); }}
-                    // >
-                    //     <Text style={styles.tarea_text}>{itemData.item.value}</Text>
-                    // </Pressable>
-
                 )
             }}
             keyExtractor={(item) => item.id.toString()}

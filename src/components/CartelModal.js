@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View, Modal, Pressable } from 'react-native'
+import { StyleSheet, Text, View, Modal } from 'react-native'
 import React from 'react'
+import Boton from './Boton'
 
 const CartelModal = ({
     modalVisible,
@@ -18,32 +19,25 @@ const CartelModal = ({
                         <Text style={styles.modalBoldText}>{selTarea?.value}</Text>?
                     </Text>
                     <View style={styles.modalActions}>
-
-                        <Pressable
-                            style={[styles.btn, styles.btn_Cancelar]}
+                        <Boton
                             onPress={onCancelModal}
-                        >
-                            <Text style={styles.textStyle}>Cancelar</Text>
-                        </Pressable>
-
-                        <Pressable
-                            style={[styles.btn, styles.btn_Posponer]}
-                            onPress={() => {
-                                PosponerTarea(selTarea.id);
+                            Texto='Cancelar'
+                            styleButtonType={styles.btn_Cancelar}
+                        />
+                        <Boton
+                            onPress={()=>{
+                                PosponerTarea(selTarea.id)
                             }}
-                        >
-                            <Text style={styles.textStyle}>Posponer</Text>
-                        </Pressable>
-
-                        <Pressable
-                            style={[styles.btn, styles.btn_Eliminar]}
-                            onPress={() => {
+                            Texto='Posponer'
+                            styleButtonType={styles.btn_Posponer}
+                        />
+                        <Boton
+                            onPress={()=>{
                                 EliminarTarea(selTarea.id);
                             }}
-                        >
-                            <Text style={styles.textStyle}>Eliminar</Text>
-                        </Pressable>
-
+                            Texto='Eliminar'
+                            styleButtonType={styles.btn_Eliminar}
+                        />
                     </View>
                 </View>
             </View>
@@ -92,11 +86,6 @@ const styles = StyleSheet.create({
     modalActions: {
         flexDirection: "row",
         justifyContent: "space-between",
-    },
-    btn: {
-        borderRadius: 20,
-        padding: 10,
-        marginHorizontal: 10,
     },
     btn_Cancelar: {
         backgroundColor: "yellow",

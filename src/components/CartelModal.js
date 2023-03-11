@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View, Modal } from 'react-native'
 import React from 'react'
 import Boton from './Boton'
+import colores from '../constantes/colores'
 
 const CartelModal = ({
     modalVisible,
     selTarea,
     onCancelModal,
-    PosponerTarea,
+    TerminarTarea,
     EliminarTarea,
 }) => {
     return (
@@ -26,9 +27,9 @@ const CartelModal = ({
                         />
                         <Boton
                             onPress={()=>{
-                                PosponerTarea(selTarea.id)
+                                TerminarTarea(selTarea.id)
                             }}
-                            Texto='Posponer'
+                            Texto='Terminado'
                             styleButtonType={styles.btn_Posponer}
                         />
                         <Boton
@@ -88,12 +89,12 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     },
     btn_Cancelar: {
-        backgroundColor: "yellow",
+        backgroundColor: colores.petroleo,
     },
     btn_Posponer: {
-        backgroundColor: "green",
+        backgroundColor: colores.verde,
     },
     btn_Eliminar: {
-        backgroundColor: "red",
+        backgroundColor: colores.rojo,
     },
 })

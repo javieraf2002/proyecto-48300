@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { AgregarTrabajo, Lista, CartelModal } from "./src/components";
+import Header from './src/components/Header';
+import Card from "./src/components/Card";
 
 export default function App() {
 
@@ -8,6 +10,8 @@ export default function App() {
 
   //Tarea
   const [tarea, setTarea] = useState("");
+  //Prioridad
+  const [prioridad, setPrioridad] = useState(0);
   //Lista de tareas ingresadas
   const [listaTareas, setListaTareas] = useState([]);
   //Estado del modal
@@ -21,6 +25,10 @@ export default function App() {
     setTarea(text);
   };
 
+  const onChangePrioridad = (pri) => {
+    setPrioridad(pri);
+  }
+
   const onCancelModal = () => {
     setModalVisible(!modalVisible);
   };
@@ -28,7 +36,12 @@ export default function App() {
   //FUNCIONES
 
   const AgregarTarea = () => {
-    setListaTareas((oldArry) => [...oldArry, { id: Date.now(), value: tarea }]);
+    setListaTareas((oldArry) => [...oldArry, {
+      id: Date.now(),
+      value: tarea,
+      prioridad: prioridad,
+      terminado: false
+    }]);
     setTarea("");
   };
 
@@ -38,7 +51,19 @@ export default function App() {
     setSelTarea(null);
   };
 
-  const PosponerTarea = (id) => {
+  const TerminarTarea = (id) => {
+    //id a buscar
+    let modificar = id;
+    // sacar el index de un array
+    let itemId = listaTareas.findIndex((item) => item.id === modificar);
+    const reemplazo = {
+      id: listaTareas[itemId].id,
+      value: listaTareas[itemId].value,
+      prioridad: listaTareas[itemId].prioridad,
+      terminado: true,
+    }
+    listaTareas.splice(itemId, 1, reemplazo);
+    // setListaTareas(listaTareas);
     setModalVisible(!modalVisible);
     setSelTarea(null);
   };
@@ -56,22 +81,22 @@ export default function App() {
 
   return (
     <View style={styles.contenedor}>
-
       {/* TITULO DE LA PANTALLA */}
-      <Text style={{
-        paddingTop: 40,
-        color: 'blue',
-      }}
-      >Lista de Tareas</Text>
-
-      {/* INGRESO DE NUEVAS TAREAS */}
-      <AgregarTrabajo
-        tarea={tarea}
-        onChangeText={onChangeText}
-        AgregarTarea={AgregarTarea}
-        placeholder='Ingresar Tarea'
-        title='Agregar'
+      <Header
+        titulo='Lista de Tareas'
       />
+      {/* INGRESO DE NUEVAS TAREAS */}
+      <Card
+        style={styles.card}
+      >
+        <AgregarTrabajo
+          tarea={tarea}
+          onChangeText={onChangeText}
+          onChangePrioridad={onChangePrioridad}
+          AgregarTarea={AgregarTarea}
+          placeholder='Ingresar Tarea'
+        />
+      </Card>
       {/* LISTA DE TAREAS */}
       <Lista
         listaTareas={listaTareas}
@@ -82,16 +107,20 @@ export default function App() {
         modalVisible={modalVisible}
         selTarea={selTarea}
         onCancelModal={onCancelModal}
-        PosponerTarea={PosponerTarea}
+        TerminarTarea={TerminarTarea}
         EliminarTarea={EliminarTarea}
       />
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   contenedor: {
-    padding: 30,
     flex: 1,
+  },
+  card: {
+    marginHorizontal: 20,
+    marginVertical: 20,
   },
 });

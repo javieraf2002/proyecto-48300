@@ -20,8 +20,14 @@ export default Boton
 
 const styles = StyleSheet.create({
     btn: {
-        borderRadius: 20,
-        padding: 10,
+        width:80,
+        height:40,
+        borderRadius: 10,
         marginHorizontal: 10,
+        alignItems:'center',
+        justifyContent:'center'        
     },
+    textStyle:{
+        color:'white'
+    }
 })

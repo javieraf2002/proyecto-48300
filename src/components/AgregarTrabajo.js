@@ -1,11 +1,14 @@
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native'
 import React from 'react'
 import RadioButton from './RadioButton'
+import Boton from './Boton'
+import colores from '../constantes/colores'
 
 const AgregarTrabajo = ({
     tarea,
     onChangeText,
     onChangePrioridad,
+    Press,
     AgregarTarea,
     placeholder,
 }) => {
@@ -21,12 +24,21 @@ const AgregarTrabajo = ({
                     />
                 </View>
                 <View>
-                    <Button title='AGREGAR' onPress={AgregarTarea} />
+                    <Boton
+                        styleButtonType={styles.btn_agregar}
+                        Texto='AGREGAR'
+                        onPress={AgregarTarea}
+                    />
                 </View>
             </View>
-            <RadioButton              
+            <RadioButton
                 press={onChangePrioridad}
             ></RadioButton>
+            <Boton
+                styleButtonType={styles.btn_ayuda}
+                Texto='AYUDA' 
+                onPress={() => { Press(false) }}
+                />
         </View>
     )
 }
@@ -38,7 +50,7 @@ const styles = StyleSheet.create({
         margin: 10,
         flexDirection: "row",
         justifyContent: "space-between",
-        alignItems:'center',
+        alignItems: 'center',
     },
     contenedor_agregar_input: {
         marginTop: 10,
@@ -46,4 +58,13 @@ const styles = StyleSheet.create({
         borderBottomColor: "black",
         borderBottomWidth: 1,
     },
+    btn_ayuda: {
+        backgroundColor: colores.verde,
+        marginVertical: 10,
+    },
+    btn_agregar: {
+        backgroundColor: colores.accept,
+        marginVertical: 4,
+        marginLeft:30,
+    }
 })

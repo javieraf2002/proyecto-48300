@@ -11,7 +11,6 @@ const Trabajo = ({
 
     let condicion = itemData.item.prioridad;
     if (itemData.item.terminado === true) condicion = 9;
-    console.log('condicion:', condicion);
     return (
         <Pressable
             style={styles.tarea}

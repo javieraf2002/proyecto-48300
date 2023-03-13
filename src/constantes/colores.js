@@ -1,6 +1,6 @@
 export default {
     primary: '#f7287b',
-    accept: '#c717fc',
+    accept: '#0E8388',
     danger: '#950101',
     header:'#404258',
     titulo:'#D5CEA3',

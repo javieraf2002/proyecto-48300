@@ -21,7 +21,8 @@ const CartelModal = ({
                     </Text>
                     <View style={styles.modalActions}>
                         <Boton
-                            onPress={onCancelModal}
+                            onPress={() => {
+                                onCancelModal()}}
                             Texto='Cancelar'
                             styleButtonType={styles.btn_Cancelar}
                         />

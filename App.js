@@ -3,6 +3,8 @@ import { StyleSheet, View } from "react-native";
 import { AgregarTrabajo, Lista, CartelModal } from "./src/components";
 import Header from './src/components/Header';
 import Card from "./src/components/Card";
+import Principal from "./src/components/Screens/Principal";
+import Ayuda from "./src/components/Screens/Ayuda";
 
 export default function App() {
 
@@ -10,14 +12,16 @@ export default function App() {
 
   //Tarea
   const [tarea, setTarea] = useState("");
-  //Prioridad
-  const [prioridad, setPrioridad] = useState(0);
   //Lista de tareas ingresadas
   const [listaTareas, setListaTareas] = useState([]);
+  //Prioridad
+  const [prioridad, setPrioridad] = useState(0);
   //Estado del modal
   const [modalVisible, setModalVisible] = useState(false);
   //tarea seleccionada
   const [selTarea, setSelTarea] = useState(null);
+  //switch entre pantallas
+  const [principal, setPrincipal] = useState(true);
 
   // EVENTOS
 
@@ -73,6 +77,10 @@ export default function App() {
     setModalVisible(true);
   };
 
+  const VerPrincipal = (estado) => {
+    setPrincipal(estado);
+  }
+
   // PARA VERIFICAR
 
   useEffect(() => {
@@ -85,42 +93,31 @@ export default function App() {
       <Header
         titulo='Lista de Tareas'
       />
-      {/* INGRESO DE NUEVAS TAREAS */}
-      <Card
-        style={styles.card}
-      >
-        <AgregarTrabajo
-          tarea={tarea}
-          onChangeText={onChangeText}
-          onChangePrioridad={onChangePrioridad}
-          AgregarTarea={AgregarTarea}
-          placeholder='Ingresar Tarea'
-        />
-      </Card>
-      {/* LISTA DE TAREAS */}
-      <Lista
-        listaTareas={listaTareas}
-        SeleccionarTarea={SeleccionarTarea}
-      />
-      {/* CARTEL MODAL */}
-      <CartelModal
-        modalVisible={modalVisible}
-        selTarea={selTarea}
-        onCancelModal={onCancelModal}
-        TerminarTarea={TerminarTarea}
-        EliminarTarea={EliminarTarea}
-      />
-
-    </View>
+      {/* PANTALLA PRINCIPAL */}
+      {
+        principal
+          ? <Principal
+            listaTareas={listaTareas}
+            tarea={tarea}
+            modalVisible={modalVisible}
+            selTarea={selTarea}
+            onChangeText={onChangeText}
+            onChangePrioridad={onChangePrioridad}
+            onCancelModal={onCancelModal}
+            AgregarTarea={AgregarTarea}
+            EliminarTarea={EliminarTarea}
+            TerminarTarea={TerminarTarea}
+            SeleccionarTarea={SeleccionarTarea}
+            Press={VerPrincipal}
+          ></Principal>
+          : <Ayuda Press={VerPrincipal}></Ayuda>
+      }
+    </View >
   );
 }
 
 const styles = StyleSheet.create({
   contenedor: {
     flex: 1,
-  },
-  card: {
-    marginHorizontal: 20,
-    marginVertical: 20,
   },
 });

@@ -4,7 +4,9 @@ import React from 'react'
 const Alerta = ({ style }) => {
     return (
         <View >
-            <Text style={[styles.circle, style]}></Text>
+            <Text style={[styles.circle, style]}>
+                
+            </Text>
         </View>
     )
 }

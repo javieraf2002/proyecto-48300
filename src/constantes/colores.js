@@ -7,6 +7,7 @@ export default {
     fondo:'#E5E5CB',
 
     rojo:'red',
+    rojo:'red',
     verde:'green',
     amarillo:'yellow',
     gris:'gray',

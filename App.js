@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View } from "react-native";
-import { AgregarTrabajo, Lista, CartelModal } from "./src/components";
+import { StyleSheet, Text, View } from "react-native";
 import Header from './src/components/Header';
-import Card from "./src/components/Card";
 import Principal from "./src/components/Screens/Principal";
 import Ayuda from "./src/components/Screens/Ayuda";
 

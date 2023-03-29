@@ -1,11 +1,23 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, FlatList } from 'react-native'
 import React from 'react'
+import ItemRealizada from '../components/ItemRealizada'
+import { TAREAS } from '../data/tareas'
 
 const ScreenRealizadas = () => {
+
+    //FILTRADO POR ESTADO
+
+    const tareas = TAREAS.filter(tarea => tarea.estado === 2)
+
+    const renderItemTarea = ({ item }) => (<ItemRealizada tarea={item}></ItemRealizada>)
+
     return (
-        <View style={styles.screen}>
-            <Text>Tab Realizadas</Text>
-        </View>
+        <FlatList
+            data={tareas}
+            keyExtractor={(tarea) => { tarea.id }}
+            renderItem={renderItemTarea}
+        >
+        </FlatList>
     )
 }
 

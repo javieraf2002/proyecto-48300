@@ -1,11 +1,25 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, FlatList } from 'react-native'
 import React from 'react'
+import ItemTarea from '../components/ItemPendiente'
+import { TAREAS } from '../data/tareas'
 
-const ScreenPendientes = () => {
+const ScreenPendientes = ({ route, navigation }) => {
+
+    const { categoriaId } = route.params
+
+    //FILTRADO POR CATEGORIA
+
+    const tareas = TAREAS.filter(tarea => tarea.categoria === categoriaId)
+
+    const renderItemTarea = ({ item }) => (<ItemTarea tarea={item}></ItemTarea>)
+
     return (
-        <View style={styles.screen}>
-            <Text>Screen Pendientes</Text>
-        </View>
+        <FlatList
+            data={tareas}
+            keyExtractor={(tarea) => { tarea.id }}
+            renderItem={renderItemTarea}
+        >
+        </FlatList>
     )
 }
 

@@ -9,8 +9,9 @@ const ItemTarea = ({ tarea, onSelected }) => {
                     <Text styleÇ={styles.title}>{tarea.tarea}</Text>
                 </View>
                 <View>
-                    <Text style={styles.details}>{tarea.estado}</Text>
-                    <Text style={styles.details}>{tarea.fecha.toLocaleDateString()}</Text>
+                    <Text style={styles.details}>Categoria: {tarea.categoria}</Text>
+                    <Text style={styles.details}>Estado: {tarea.estado}</Text>
+                    <Text style={styles.details}>Fecha: {tarea.fecha.toLocaleDateString()}</Text>
                 </View>
             </View>
         </TouchableOpacity>

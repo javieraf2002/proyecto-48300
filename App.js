@@ -8,6 +8,10 @@ import {
 } from '@expo-google-fonts/open-sans';
 import MainNavigator from './src/navigators/MainNavigator';
 
+//REDUX
+import { Provider } from 'react-redux'
+import store from './src/store/index'
+
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
@@ -29,7 +33,12 @@ export default function App() {
   }
 
   return (
-    // IMPORTAMOS LA NAVEGACION TODA LA APLICACIÓN
-    <MainNavigator />
+    //ANTES DE REDUX
+    // <MainNavigator />
+    //PARA PODER TRABAJAR CON NUESTRO STORE
+    <Provider store={store}>
+      {/* //IMPORTAMOS LA NAVEGACION TODA LA APLICACIÓN */}
+      <MainNavigator />
+    </Provider>
   );
 }

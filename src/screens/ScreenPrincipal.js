@@ -1,29 +1,41 @@
 import { StyleSheet, View, FlatList } from 'react-native'
 import React from 'react'
-import { CATEGORIAS } from '../data/categorias'
+//PARA UTILIZAR REDUX USAMOS EL HOOK
+import { useSelector, useDispatch } from 'react-redux'
+import { filterTareas } from '../store/actions/tareas.action'
 
 import ItemCategoria from '../components/ItemCategoria'
 
 const ScreenPrincipal = ({ navigation }) => {
 
+    const categorias = useSelector(state => state.categorias.categorias)
+    const dispatch = useDispatch()
+
     //EVENTO PARA FILTRAR POR CATEGORIA
     const onSelectItemCategoria = (categoria) => {
-
+        
+        dispatch(filterTareas(categoria.id));
+        
         navigation.navigate('Pendientes', {
             //OBJETO CON LAS PROPIEDADES QUE SE LE PASA A LA PANTALLA (Productos)
             //PASAN A TRAVES DE LA PROPIEDAD ROUTE
-            categoriaId: categoria.id,
-            categoriaNombre: categoria.nombre
+            categoriaNombre: categoria.nombre,
         })
     }
 
     //RENDERIZADO DE CADA CATEGORIA
     const renderItemCategoria = ({ item }) => (<ItemCategoria categoria={item} onSelected={onSelectItemCategoria}></ItemCategoria>)
-    
+    //OTRA FORMA DE ARMAR  LA FUNSION ANTERIOR
+    const renderItemCategoria_Alt = (item)=>{
+        return (
+            <ItemCategoria categoria={item} onSelected={onSelectItemCategoria}></ItemCategoria>
+        )
+    }
+
     return (
         <View style={styles.screen}>
             <FlatList
-                data={CATEGORIAS}
+                data={categorias}
                 keyExtractor={(categoria) => categoria.id}
                 renderItem={renderItemCategoria}
                 numColumns={1} //NO SE PUEDE CAMBIAR EN TIEMPO DE EJECUCION, HAY QUE HACER UN RELOAD

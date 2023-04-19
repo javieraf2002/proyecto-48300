@@ -25,7 +25,7 @@ const ScreenPrincipal = ({ navigation }) => {
 
     //RENDERIZADO DE CADA CATEGORIA
     const renderItemCategoria = ({ item }) => (<ItemCategoria categoria={item} onSelected={onSelectItemCategoria}></ItemCategoria>)
-    //OTRA FORMA DE ARMAR  LA FUNSION ANTERIOR
+    //OTRA FORMA DE ARMAR  LA FUNCIÓN ANTERIOR
     const renderItemCategoria_Alt = (item)=>{
         return (
             <ItemCategoria categoria={item} onSelected={onSelectItemCategoria}></ItemCategoria>
@@ -38,7 +38,7 @@ const ScreenPrincipal = ({ navigation }) => {
                 data={categorias}
                 keyExtractor={(categoria) => categoria.id}
                 renderItem={renderItemCategoria}
-                numColumns={1} //NO SE PUEDE CAMBIAR EN TIEMPO DE EJECUCION, HAY QUE HACER UN RELOAD
+                numColumns={1} //NO SE PUEDE CAMBIAR EN TIEMPO DE EJECUCIÓN, HAY QUE HACER UN RELOAD
             >
             </FlatList>
         </View>

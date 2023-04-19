@@ -2,15 +2,16 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-//INCONOS TABS
+//ICONOS TABS
 
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 
-//SCREENS DE NAVEGACION
+//SCREENS DE NAVEGACIÓN
 
 import StackNavigator from './StackNavigator';
+import StackNotas from './StackNotas';
 import ScreenNueva from '../screens/ScreenNueva';
 import ScreenRealizadas from '../screens/ScreenRealizadas';
 
@@ -61,6 +62,18 @@ const TabsNavigator = () => {
                     )
                 }}
             ></BottomTabs.Screen>
+            <BottomTabs.Screen
+                name='Notas-Tab'
+                component={StackNotas}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <View style={styles.tabBarIcon}>
+                            <MaterialIcons name="indeterminate-check-box" size={24} color="black" />
+                            <Text style={{ color: focused ? '#7F5DF0' : '#748C94' }}>Realizadas</Text>
+                        </View>
+                    )
+                }}
+            ></BottomTabs.Screen>            
         </BottomTabs.Navigator>
     )
 }

@@ -3,14 +3,16 @@ import thunk from "redux-thunk";
 
 import CategoriaReducer from "./reducers/categorias.reducer";
 import TareasReducer from "./reducers/tareas.reducer";
+import authReducer from "./reducers/auth.reducer";
 
 //COMBINAR LAS DOS FUSIONES REDUCTORAS EN UN OBJETOa
 
 const RootReducer = combineReducers({
     categorias: CategoriaReducer,
     tareas: TareasReducer,
+    auth: authReducer,
 })
 
-//EXPORTACION PARA PODER APLICARLOS
+//EXPORTACIÓN PARA PODER APLICARLOS
 export default createStore(RootReducer, applyMiddleware(thunk));
 

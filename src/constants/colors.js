@@ -1,6 +1,4 @@
-export default COLORES = {
-    importante: '',
-    normal: '',
-    trabajo:'',
-    defecto:'',
+export default {
+    primary:'#2d93ad',
+    accent:'#aac0af',
 }

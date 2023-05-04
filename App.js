@@ -37,7 +37,7 @@ export default function App() {
     // <MainNavigator />
     //PARA PODER TRABAJAR CON NUESTRO STORE
     <Provider store={store}>
-      {/* //IMPORTAMOS LA NAVEGACION TODA LA APLICACIÓN */}
+      {/* //IMPORTAMOS LA NAVEGACIÓN TODA LA APLICACIÓN */}
       <MainNavigator />
     </Provider>
   );

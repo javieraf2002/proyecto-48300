@@ -7,8 +7,8 @@ import { useSelector } from 'react-redux'
 
 const MainNavigator = () => {
 
-    isAuth = useSelector(state=>state.auth.userId);
-
+    // isAuth = useSelector(state=>state.auth.userId);
+    isAuth = true;
     return (
         <NavigationContainer>
             {isAuth ? <TabsNavigator></TabsNavigator> : <AuthNavigator></AuthNavigator>} 

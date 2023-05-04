@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 //SCREENS DE NAVEGACIÓN
 
@@ -56,7 +57,7 @@ const TabsNavigator = () => {
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View style={styles.tabBarIcon}>
-                            <MaterialIcons name="indeterminate-check-box" size={24} color="black" />
+                            <MaterialCommunityIcons name="archive-cancel-outline" size={24} color="black" />
                             <Text style={{ color: focused ? '#7F5DF0' : '#748C94' }}>Realizadas</Text>
                         </View>
                     )
@@ -68,8 +69,8 @@ const TabsNavigator = () => {
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View style={styles.tabBarIcon}>
-                            <MaterialIcons name="indeterminate-check-box" size={24} color="black" />
-                            <Text style={{ color: focused ? '#7F5DF0' : '#748C94' }}>Realizadas</Text>
+                            <MaterialIcons name="event-note" size={24} color="black" />
+                            <Text style={{ color: focused ? '#7F5DF0' : '#748C94' }}>Notas</Text>
                         </View>
                     )
                 }}

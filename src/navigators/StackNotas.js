@@ -1,6 +1,8 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+
+import { Ionicons } from '@expo/vector-icons'
 
 import NotasListScreen from '../screens/NotasListScreen'
 import NotasDetalleScreen from '../screens/NotasDetalleScreen'
@@ -17,6 +19,15 @@ const StackNotas = () => {
             <Stack.Screen
                 name='Notas'
                 component={NotasListScreen}
+
+                options={({ navigation }) => ({
+                    title: 'Notas',
+                    headerRight: () => (
+                        <TouchableOpacity onPress={() => navigation.navigate('Agregar')}>
+                            <Ionicons name="md-add" color='red' size={23} />
+                        </TouchableOpacity>
+                    )
+                })}
             ></Stack.Screen>
             <Stack.Screen
                 name='Detalle'

@@ -2,10 +2,11 @@ import { View, Text, StyleSheet, ScrollView, TextInput, Button } from 'react-nat
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { addNota } from '../store/actions/notas.action'
+import ImageSelector from '../components/ImageSelector'
 
-const NotasNuevaScreen = () => {
+const NotasNuevaScreen = ({ navigation }) => {
 
-    const dispatch = useDispatch;
+    const dispatch = useDispatch();
 
     const [tituloValue, setTituloValue] = React.useState('')
     const [notaValue, setNotaValue] = React.useState('')
@@ -31,7 +32,7 @@ const NotasNuevaScreen = () => {
                 <TextInput style={styles.input} onChangeText={tituloChange}/>
                 <Text style={styles.label}>Nota</Text>
                 <TextInput style={styles.input} onChangeText={notaChange}/>
-                {/* <ImageSelector onImage={image=>setImageValue(image)} /> */}
+                <ImageSelector onImage={image=>setImageValue(image)} />
                 <Button title="Guardar" color="#394867" onPress={GrabarNota} />
             </View>
         </ScrollView>    )

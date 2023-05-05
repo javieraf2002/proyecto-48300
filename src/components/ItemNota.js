@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 
 const ItemNota = ({ titulo, nota, image, onSelect }) => {
-    console.log(titulo)
+    //console.log(titulo)
     return (
         <TouchableOpacity onPress={onSelect} style={styles.placeItem}>
             <Image style={styles.image} source={{ uri: image }} />

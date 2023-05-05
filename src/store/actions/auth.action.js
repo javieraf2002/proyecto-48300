@@ -23,7 +23,7 @@ export const signUp = (email, password) => {
                 const errorRes = await response.json();
                 const errorId = errorRes.error.message;
                 let message = 'No se pudo registrar';
-                console.log(errorId);
+                //console.log(errorId);
                 switch (errorId) {
                     case 'EMAIL_EXISTS':
                         message = 'El email ya existe';
@@ -42,7 +42,7 @@ export const signUp = (email, password) => {
             }
 
             const data = await response.json();
-            console.log(data);
+            //console.log(data);
 
             dispatch({
                 type: SIGN_UP,

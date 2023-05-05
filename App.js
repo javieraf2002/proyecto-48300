@@ -8,6 +8,10 @@ import {
 } from '@expo-google-fonts/open-sans';
 import MainNavigator from './src/navigators/MainNavigator';
 
+//DB
+
+import { deleteNotas, init } from './src/db';
+
 //REDUX
 import { Provider } from 'react-redux'
 import store from './src/store/index'
@@ -31,6 +35,22 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
+
+  //INICIALIZAR SQLITE
+
+  init().then(() => {
+    console.log('SQLITE: Inicializada');
+  }).catch(err => {
+    console.log('SQLITE: Error de Inicialización - ', err);
+  });
+
+  //ELIMINAR LOS REGISTROS QUE PUEDA TENER LA TABLA
+
+  // deleteNotas().then(() => {
+  //   console.log('SQLITE: Se eliminaron todos los registros');
+  // }).catch(err => {
+  //   console.log('SQLITE: Error al eliminar todos los registros de la base de datos - ', err);
+  // });
 
   return (
     //ANTES DE REDUX

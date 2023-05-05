@@ -1,13 +1,18 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import ItemNota from '../components/ItemNota'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { loadNotas } from '../store/actions/notas.action'
 
 const NotasListScreen = ({ navigation }) => {
 
     const notas = useSelector(state => state.notas.notas)
 
-    console.log(notas)
+    const dispatch = useDispatch();
+
+    React.useEffect(()=>{
+        dispatch(loadNotas());
+    }, []);
 
     const renderNota = (data) => (
         <ItemNota

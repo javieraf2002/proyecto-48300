@@ -7,7 +7,7 @@ const initialState = {
     selected: null,
 }
 
-//SE CREA LA FUNSION REDUCTORA
+//SE CREA LA FUNCIÓN REDUCTORA
 const CategoriaReducer = (state = initialState, action) => {
     switch (action.type) {
         case SELECT_CATEGORIA:
@@ -23,6 +23,6 @@ const CategoriaReducer = (state = initialState, action) => {
     }
 }
 
-//EXPORTACION
+//EXPORTACIÓN
 export default CategoriaReducer;
 
